@@ -638,5 +638,12 @@ namespace IngameDebugConsole
 
 			return newLogItem;
 		}
+
+		// Set focus to command input.
+		public void FocusInput()
+		{
+			commandInputField.Select();
+			commandInputField.ActivateInputField();
+		}
 	}
 }
