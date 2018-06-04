@@ -158,6 +158,28 @@ namespace IngameDebugConsole
 		private DebugLogLogcatListener logcatListener;
 #endif
 
+		// External access to log window visibility state. 
+		public bool IsLogWindowVisible 
+		{
+			get
+			{
+				return isLogWindowVisible;
+			}
+		}
+
+		// External access to command text field
+		public string CommandText
+		{
+			get { return commandInputField.text; }
+			set { commandInputField.text = value; }
+		}
+
+		// External access to command text's cursor locaton
+		public int CommandCaret
+		{
+			get { return commandInputField.caretPosition; }
+		}
+
 		private void OnEnable()
 		{
 			// Only one instance of debug console is allowed
@@ -642,8 +664,13 @@ namespace IngameDebugConsole
 		// Set focus to command input.
 		public void FocusInput()
 		{
-			commandInputField.Select();
 			commandInputField.ActivateInputField();
+		}
+
+		// Remove focus from the command input.
+		public void UnfocusInput()
+		{
+			commandInputField.DeactivateInputField();
 		}
 	}
 }
